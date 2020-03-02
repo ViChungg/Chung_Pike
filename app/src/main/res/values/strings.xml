@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Chung_Pike</string>
+    <string name="add_reading_btn">Add Reading</string>
+    <string name="list_readings_btn">List Readings</string>
+    <string name="name_entry">Name:</string>
+    <string name="add_title">Add a Reading</string>
+    <string name="systolic_reading">Systolic reading</string>
+    <string name="diastolic_reading">Diastolic reading</string>
+    <string name="add_btn">Submit</string>
 </resources>
