@@ -4,19 +4,20 @@ import java.time.LocalDateTime;
 
 public class Reading {
     String userId;
-    LocalDateTime dateTime;
+    String dateTime;
     float systolicReading;
     float diastolicReading;
     String condition;
 
     public Reading() {}
 
-    public Reading(String userId, LocalDateTime dateTime, float systolicReading, float diastolicReading,
+    public Reading(String userId, String dateTime, float systolicReading, float diastolicReading,
                    String condition) {
         this.userId = userId;
         this.dateTime = dateTime;
         this.systolicReading = systolicReading;
         this.diastolicReading = diastolicReading;
+        this.condition = condition;
     }
 
     public String getUserId() {
@@ -27,11 +28,11 @@ public class Reading {
         this.userId = userId;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 

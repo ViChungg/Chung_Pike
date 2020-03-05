@@ -1,5 +1,6 @@
 package com.example.chung_pike;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,17 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class AddReadingActivity extends AppCompatActivity {
     DatabaseReference databaseReadings;
     EditText userId, systolicReading, diastolicReading;
-    LocalDateTime dateTime;
+    String dateTime;
     String condition;
 
     @Override
@@ -27,10 +31,11 @@ public class AddReadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reading);
 
-        databaseReadings = FirebaseDatabase.getInstance().getReference("users");
+
         userId = findViewById(R.id.name_entry);
         systolicReading = findViewById(R.id.systolic_reading);
         diastolicReading = findViewById(R.id.diastolic_reading);
+        databaseReadings = FirebaseDatabase.getInstance().getReference("users");
 
         Button addReadBtn = findViewById(R.id.submit_reading);
         addReadBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,16 +57,14 @@ public class AddReadingActivity extends AppCompatActivity {
             Toast.makeText(this, "You must enter a name", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(sysReading) || sysReading.matches("^[a-zA-Z0-9]+$")
-        || sysReading.equals("")) {
+        if (TextUtils.isEmpty(sysReading) || sysReading.matches("^[a-zA-Z]+$")) {
             Toast.makeText(this,
                     "You must enter a valid Systolic Reading", Toast.LENGTH_SHORT).show();
             return;
         } else {
             sysFloat = Float.valueOf(sysReading);
         }
-        if (TextUtils.isEmpty(diasReading) || diasReading.matches("^[a-zA-Z0-9]+$")
-        || diasReading.equals("")) {
+        if (TextUtils.isEmpty(diasReading) || diasReading.matches("^[a-zA-Z]+$")) {
             Toast.makeText(this,
                     "You must enter a valid Diastolic Reading", Toast.LENGTH_SHORT).show();
             return;
@@ -69,7 +72,9 @@ public class AddReadingActivity extends AppCompatActivity {
             diasFloat = Float.valueOf(diasReading);
         }
 
-        dateTime = LocalDateTime.now();
+        SimpleDateFormat ISO_8601_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+
+        dateTime = ISO_8601_FORMAT.format(new Date());
 
         if (sysFloat < 120 && diasFloat < 80) {
             condition = "Normal";
@@ -86,7 +91,7 @@ public class AddReadingActivity extends AppCompatActivity {
         String id = databaseReadings.push().getKey();
         Reading reading = new Reading(name, dateTime, sysFloat, diasFloat, condition);
 
-        Task setValueTask= databaseReadings.child(id).setValue(reading);
+        Task setValueTask = databaseReadings.child(id).setValue(reading);
 
         setValueTask.addOnSuccessListener(new OnSuccessListener() {
             @Override
@@ -96,6 +101,15 @@ public class AddReadingActivity extends AppCompatActivity {
                 userId.setText("");
                 systolicReading.setText("");
                 diastolicReading.setText("");
+                condition = "";
+            }
+        });
+
+        setValueTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddReadingActivity.this,
+                        "Something went wrong.\n" + e.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
