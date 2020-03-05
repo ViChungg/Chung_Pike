@@ -49,8 +49,8 @@ public class AddReadingActivity extends AppCompatActivity {
     private void addReading() {
         String name = userId.getText().toString().trim();
         String sysReading = systolicReading.getText().toString().trim();
-        float sysFloat = 0;
-        float diasFloat = 0;
+        float sysFloat;
+        float diasFloat;
         String diasReading = diastolicReading.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)) {
@@ -76,16 +76,18 @@ public class AddReadingActivity extends AppCompatActivity {
 
         dateTime = ISO_8601_FORMAT.format(new Date());
 
-        if (sysFloat < 120 && diasFloat < 80) {
-            condition = "Normal";
-        } else if (sysFloat >= 120 && sysFloat <= 129 && diasFloat < 80) {
-            condition = "Elevated";
-        } else if ((sysFloat >= 130 && sysFloat <= 139) || (diasFloat >= 80 && diasFloat <= 89)) {
-            condition = "High blood pressure (stage 1)";
+        if (sysFloat > 180 || diasFloat > 120) {
+            condition = "Hypertensive Crisis";
+            CrisisDialogFragment dialog = new CrisisDialogFragment();
+            dialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
         } else if (sysFloat >= 140 || diasFloat >= 90) {
             condition = "High blood pressure (stage 2)";
-        } else if (sysFloat > 180 || diasFloat > 120) {
-            condition = "Hypertensive Crisis";
+        } else if ((sysFloat >= 130 && sysFloat <= 139) || (diasFloat >= 80 && diasFloat <= 89)) {
+            condition = "High blood pressure (stage 1)";
+        } else if (sysFloat >= 120 && sysFloat <= 129 && diasFloat < 80) {
+            condition = "Elevated";
+        } else if (sysFloat < 120 && diasFloat < 80) {
+            condition = "Normal";
         }
 
         String id = databaseReadings.push().getKey();
@@ -104,6 +106,11 @@ public class AddReadingActivity extends AppCompatActivity {
                 condition = "";
             }
         });
+
+//        if (condition.equals("Hypertensive Crisis")) {
+//            CrisisDialogFragment dialog = new CrisisDialogFragment();
+//            dialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+//        }
 
         setValueTask.addOnFailureListener(new OnFailureListener() {
             @Override

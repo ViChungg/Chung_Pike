@@ -7,4 +7,6 @@
     <string name="systolic_reading">Systolic reading</string>
     <string name="diastolic_reading">Diastolic reading</string>
     <string name="add_btn">Submit</string>
+    <string name="back_btn">Back</string>
+    <string name="accept_btn">Accept</string>
 </resources>
