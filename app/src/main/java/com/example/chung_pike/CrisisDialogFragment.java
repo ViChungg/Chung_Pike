@@ -16,7 +16,7 @@ public class CrisisDialogFragment extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        String msg = "Hypertensive Crisis! Consult your doctor immediately!";
+        String msg = getResources().getString(R.string.crisis_notice);
 
         builder.setMessage(msg)
                 .setPositiveButton(R.string.accept_btn, new DialogInterface.OnClickListener() {

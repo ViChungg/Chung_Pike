@@ -9,4 +9,5 @@
     <string name="add_btn">Submit</string>
     <string name="back_btn">Back</string>
     <string name="accept_btn">Accept</string>
+    <string name="crisis_notice">Hypertensive Crisis! Consult your doctor immediately!</string>
 </resources>

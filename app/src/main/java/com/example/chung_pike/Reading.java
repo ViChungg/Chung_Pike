@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class Reading {
     String userId;
+    String userName;
     String dateTime;
     float systolicReading;
     float diastolicReading;
@@ -26,6 +27,14 @@ public class Reading {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getDateTime() {

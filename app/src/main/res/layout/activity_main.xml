@@ -10,14 +10,14 @@
 
     <Button
         android:id="@+id/add_reading_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/add_reading_btn" />
 
     <Button
         android:id="@+id/list_readings_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/list_readings_btn" />
