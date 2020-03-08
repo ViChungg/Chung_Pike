@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/update_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_title" />
+
+    <EditText
+        android:id="@+id/update_name_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_entry"/>
+
+    <EditText
+        android:id="@+id/update_systolic_reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/systolic_reading"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/update_diastolic_reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/diastolic_reading"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/delete_btn" />
+
+        <Button
+            android:id="@+id/update_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/update_btn" />
+    </LinearLayout>
+
+</LinearLayout>

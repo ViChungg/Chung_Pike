@@ -10,4 +10,8 @@
     <string name="back_btn">Back</string>
     <string name="accept_btn">Accept</string>
     <string name="crisis_notice">Hypertensive Crisis! Consult your doctor immediately!</string>
+    <string name="monthly_average_btn">Month-to-Date Average Reading</string>
+    <string name="update_btn">Update</string>
+    <string name="update_title">Update Reading</string>
+    <string name="delete_btn">Delete</string>
 </resources>

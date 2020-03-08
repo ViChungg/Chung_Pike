@@ -12,9 +12,10 @@ public class Reading {
 
     public Reading() {}
 
-    public Reading(String userId, String dateTime, float systolicReading, float diastolicReading,
+    public Reading(String userId, String userName, String dateTime, float systolicReading, float diastolicReading,
                    String condition) {
         this.userId = userId;
+        this.userName = userName;
         this.dateTime = dateTime;
         this.systolicReading = systolicReading;
         this.diastolicReading = diastolicReading;

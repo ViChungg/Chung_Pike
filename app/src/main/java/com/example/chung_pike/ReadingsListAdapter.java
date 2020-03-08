@@ -42,7 +42,7 @@ public class ReadingsListAdapter extends ArrayAdapter<Reading> {
         TextView tvCondition = listViewItem.findViewById(R.id.textViewCondition);
 
         Reading read = readingsList.get(position);
-        tvName.setText(read.getUserId());
+        tvName.setText(read.getUserName());
         tvSys.setText(String.valueOf(read.getSystolicReading()));
         tvDias.setText(String.valueOf(read.getDiastolicReading()));
         tvCondition.setText(read.getCondition());

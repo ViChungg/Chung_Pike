@@ -91,7 +91,7 @@ public class AddReadingActivity extends AppCompatActivity {
         }
 
         String id = databaseReadings.push().getKey();
-        Reading reading = new Reading(name, dateTime, sysFloat, diasFloat, condition);
+        Reading reading = new Reading(id, name, dateTime, sysFloat, diasFloat, condition);
 
         Task setValueTask = databaseReadings.child(id).setValue(reading);
 
@@ -106,11 +106,6 @@ public class AddReadingActivity extends AppCompatActivity {
                 condition = "";
             }
         });
-
-//        if (condition.equals("Hypertensive Crisis")) {
-//            CrisisDialogFragment dialog = new CrisisDialogFragment();
-//            dialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
-//        }
 
         setValueTask.addOnFailureListener(new OnFailureListener() {
             @Override

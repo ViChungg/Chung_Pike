@@ -21,4 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/list_readings_btn" />
+
+    <Button
+        android:id="@+id/month_average_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/monthly_average_btn" />
+
 </LinearLayout>
