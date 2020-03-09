@@ -134,17 +134,19 @@ public class MonthlyAverageActivity extends AppCompatActivity {
                 TextView tvSysAvg = findViewById(R.id.monthly_systolic);
                 TextView tvDiasAvg = findViewById(R.id.monthly_diastolic);
                 TextView tvCondition = findViewById(R.id.monthly_condition);
+                TextView tvMonthYear = findViewById(R.id.month_year);
+                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+                SimpleDateFormat yearfmt = new SimpleDateFormat("yyyy");
+                SimpleDateFormat monthfmt = new SimpleDateFormat("MMMM");
+                Date d = null;
+                String readingYear = "";
+                String readingMonth = "";
 
                 for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
 
                     Reading reading = areaSnapshot.getValue(Reading.class);
                     String date = reading.getDateTime();
-                    SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
-                    SimpleDateFormat yearfmt = new SimpleDateFormat("yyyy");
-                    SimpleDateFormat monthfmt = new SimpleDateFormat("MMMM");
-                    Date d = null;
-                    String readingYear = "";
-                    String readingMonth = "";
+
                     try {
                         d = fmt.parse(date);
                         readingYear = yearfmt.format(d);
@@ -162,9 +164,10 @@ public class MonthlyAverageActivity extends AppCompatActivity {
                         diastolicSum += reading.getDiastolicReading();
                         count++;
                     }
-                    Log.d("COUNT", Boolean.toString(reading.getUserName().equals(name)));
+
 
                 }
+                tvMonthYear.setText(month + " " + year);
 
                 if (systolicSum == 0 || diastolicSum == 0) {
                     // update TextViews
@@ -183,6 +186,8 @@ public class MonthlyAverageActivity extends AppCompatActivity {
                     String condition = getCondition(sysAvg, diasAvg);
                     tvCondition.setText(condition);
                 }
+
+
 
             }
 

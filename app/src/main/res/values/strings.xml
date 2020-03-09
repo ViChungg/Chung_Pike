@@ -23,4 +23,9 @@
     <string name="monthly_spinner_label">Choose a name:</string>
     <string name="monthly_month_label">Choose a month:</string>
     <string name="monthly_year_label">Choose a year:</string>
+    <string name="readingName">Name: </string>
+    <string name="readingSystolic">Systolic Reading: </string>
+    <string name="diastolicReading">Diastolic Reading: </string>
+    <string name="readingCondition">Condition: </string>
+    <string name="readingTitle">Readings</string>
 </resources>
