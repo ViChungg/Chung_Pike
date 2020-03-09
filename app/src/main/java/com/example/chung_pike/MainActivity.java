@@ -31,5 +31,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button averageBtn = findViewById(R.id.month_average_btn);
+        averageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MonthlyAverageActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

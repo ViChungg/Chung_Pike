@@ -14,4 +14,13 @@
     <string name="update_btn">Update</string>
     <string name="update_title">Update Reading</string>
     <string name="delete_btn">Delete</string>
+    <string name="monthly_username_label">Name:</string>
+    <string name="monthly_systolic_label">Systolic Reading:</string>
+    <string name="monthly_diastolic_label">Diastolic Reading:</string>
+    <string name="monthly_condition_label">Average Condition:</string>
+    <string name="monthly_readings_label">Month-to-date average readings for</string>
+    <string name="monthly_get_btn">Get Report</string>
+    <string name="monthly_spinner_label">Choose a name:</string>
+    <string name="monthly_month_label">Choose a month:</string>
+    <string name="monthly_year_label">Choose a year:</string>
 </resources>
